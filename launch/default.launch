@@ -1,7 +1,8 @@
 <launch>
+    <arg name="show_rviz" default="true"/>
     <arg name="server" default="192.168.0.2"/>
 
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find record_mocap)/config/default.rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find record_mocap)/config/default.rviz" if="$(arg show_rviz)"/>
     <node pkg="vrpn_client_ros" type="vrpn_client_node" name="mocap"
 output="screen">
         <rosparam subst_value="true">
